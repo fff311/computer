@@ -1,0 +1,72 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    /* Кастомные стили для формы двухфакторной аутентификации */
+    .two-factor-form {
+        max-width: 450px;
+        margin: 30px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .two-factor-form h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .two-factor-form .form-row {
+        margin-bottom: 15px;
+    }
+
+    .two-factor-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .two-factor-form input[type="text"],
+    .two-factor-form input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .two-factor-form .submit-row {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .two-factor-form .submit-row input {
+        background: #417690;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .two-factor-form .submit-row input:hover {
+        background: #305067;
+    }
+
+    .two-factor-form .help {
+        font-size: 0.9em;
+        color: #666;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="two-factor-form">
+    {% block two_factor_content %}{% endblock %}
+</div>
+{% endblock %}

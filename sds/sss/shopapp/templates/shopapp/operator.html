@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processed Videos</title>
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+
+<!-- Отобразите имя авторизированного пользователя -->
+<h2>Оператор: {{ current_user.login }}</h2>
+
+{% for camera in cameras %}
+<h3>{{ camera.number }}</h3>
+
+{% if camera.video_file %}
+<!-- Если есть видеофайл - показываем его -->
+<img src="{% url 'video_feed' camera.id %}" width="640" height="480"><br><br>
+
+{% elif not camera.processed %}
+<!-- Если не обработано - показываем сообщение -->
+<p>Видео не обработано.</p><br><br>
+
+{% else %}
+<!-- Если состояние закрыто - показываем стрим -->
+<img src="{% url 'stream_view' %}?camera_id={{ camera.id }}" width="640" height="480"><br><br>
+
+{% endif %}
+
+{% endfor %}
+
+{% endif %}
+
+</body>
+</html>
